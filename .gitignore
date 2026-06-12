@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+package-lock.json
+skills-lock.json
+
+# Build output
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# Firebase local
+.firebaserc
+.firestore/
+*.db
+
+# Outros projetos
+vue-project/
+
+# Agent / tooling
+.agents/
+
+# OS
+Thumbs.db
+.DS_Store
