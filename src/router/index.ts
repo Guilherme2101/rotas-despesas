@@ -5,6 +5,7 @@ import RegisterView from '../views/RegisterView.vue'
 import DeliveriesView from '../views/DeliveriesView.vue'
 import SalesView from '../views/SalesView.vue'
 import ExpensesView from '../views/ExpensesView.vue'
+import UsersView from '../views/UsersView.vue'
 import { auth } from '../firebase'
 
 const routes = [
@@ -27,6 +28,12 @@ const routes = [
     path: '/expenses',
     name: 'expenses',
     component: ExpensesView,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/users',
+    name: 'users',
+    component: UsersView,
     meta: { requiresAuth: true }
   }
 ]

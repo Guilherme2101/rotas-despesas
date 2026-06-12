@@ -18,6 +18,7 @@ const handleLogout = async () => {
       <router-link v-if="authStore.user" to="/deliveries" class="highlight-btn">Entregadores</router-link>
       <router-link v-if="authStore.user" to="/sales" class="highlight-btn">Vendas</router-link>
       <router-link v-if="authStore.user" to="/expenses" class="highlight-btn">Despesas</router-link>
+      <router-link v-if="authStore.user" to="/users" class="highlight-btn">Contas</router-link>
     </div>
     <div class="nav-links">
       <router-link v-if="!authStore.user" to="/login">Login</router-link>

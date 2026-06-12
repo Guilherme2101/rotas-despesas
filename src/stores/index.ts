@@ -19,13 +19,19 @@ import {
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    user: null as null | { uid: string; email: string | null }
+    user: null as null | { uid: string; email: string | null },
+    users: [] as Array<{ id: string; uid: string; email: string | null; createdAt: string }>
   }),
   actions: {
     async register(email: string, password: string) {
       try {
         const cred = await createUserWithEmailAndPassword(auth, email, password)
         this.user = { uid: cred.user.uid, email: cred.user.email }
+        await addDoc(collection(db, 'users'), {
+          uid: cred.user.uid,
+          email: cred.user.email,
+          createdAt: new Date().toISOString()
+        })
         return { success: true }
       } catch (error: any) {
         return { success: false, error: error.message }
@@ -43,6 +49,24 @@ export const useAuthStore = defineStore('auth', {
     async logout() {
       await signOut(auth)
       this.user = null
+    },
+    async loadUsers() {
+      if (!auth.currentUser) return
+      const q = query(collection(db, 'users'))
+      const snapshot = await getDocs(q)
+      this.users = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      } as any))
+    },
+    async deleteUser(id: string) {
+      try {
+        await deleteDoc(doc(db, 'users', id))
+        this.users = this.users.filter(u => u.id !== id)
+        return { success: true }
+      } catch (error: any) {
+        return { success: false, error: error.message }
+      }
     }
   }
 })
