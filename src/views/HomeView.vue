@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div v-if="authStore.user" class="content">
-      <h1>Controle de Motoboys & Vendas</h1>
+      <h1>Controle de Entregas e Despesas</h1>
       <p>Gerencie seus entregadores e controle as vendas diárias</p>
       <div class="nav-buttons">
         <router-link to="/deliveries" class="btn">Entregadores</router-link>
@@ -9,7 +9,7 @@
       </div>
     </div>
     <div v-else class="login-prompt">
-      <h1>Controle de Motoboys & Vendas</h1>
+      <h1>Controle de Entregas e Despesas</h1>
       <p>Faça login para acessar o sistema</p>
       <router-link to="/login" class="btn">Entrar</router-link>
     </div>
