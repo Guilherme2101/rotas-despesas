@@ -14,7 +14,7 @@ const handleLogout = async () => {
 <template>
   <nav class="navbar">
     <div class="nav-links-left">
-      <router-link to="/">Controle de Motoboys</router-link>
+      <router-link to="/">Controle de Entregas e Despesas</router-link>
       <router-link v-if="authStore.user" to="/deliveries" class="highlight-btn">Entregadores</router-link>
       <router-link v-if="authStore.user" to="/sales" class="highlight-btn">Vendas</router-link>
       <router-link v-if="authStore.user" to="/expenses" class="highlight-btn">Despesas</router-link>
